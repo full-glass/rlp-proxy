@@ -1,10 +1,11 @@
-require('dotenv').config();
 import express, { Response } from 'express';
 import { getMetadata } from './lib';
 import { APIOutput } from './types';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const app = express();
-
 const port = Number(process.env.PORT || 8080);
 const SERVER_URL = process.env.SERVER_URL;
 
@@ -40,8 +41,8 @@ app.get('/', async (req, res) => {
 app.get('/v2', async (req, res) => {
   try {
     let url = req.query.url as unknown as string;
-    url = url.toLowerCase();
-    url = url.indexOf('://') === -1 ? 'http://' + url : url;
+    // url = url.toLowerCase();
+    // url = url.indexOf('://') === -1 ? 'http://' + url : url;
 
     const isUrlValid =
       /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/gi.test(
