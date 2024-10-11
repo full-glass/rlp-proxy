@@ -71,7 +71,9 @@ app.get('/v2', async (req, res) => {
         ? og.image
         : images.length > 0
         ? images[0].url
-        : `${SERVER_URL}/img-placeholder.jpg`;
+        : // : `${SERVER_URL}/img-placeholder.jpg`;
+
+          `https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png`;
       const description = og.description
         ? og.description
         : meta.description
