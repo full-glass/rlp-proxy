@@ -29,6 +29,10 @@ app.listen(port, () => {
 
 app.use(express.static('public'));
 
+app.get('/health', async (req, res) => {
+  return 'Ok';
+});
+
 app.get('/', async (req, res) => {
   const url = req.query.url as unknown as string;
   const metadata = await getMetadata(url);
